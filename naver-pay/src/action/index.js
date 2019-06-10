@@ -3,6 +3,6 @@ export const LANG_SET = 'LANG_SET';
 
 
 // action creators(액션 메서드)
-export function setLanguage(lang_key) {  
-  return { 'type': LANG_SET, lang_key};
+export function setLanguage(langKey) {  
+  return { 'type': LANG_SET, langKey};
 }

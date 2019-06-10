@@ -16,14 +16,8 @@ class Header extends React.Component {
       showLangDropdown: false
     };
   }
-  componentDidMount() {
-    this.setState({selectedLang: localStorage.getItem('langKey')});
-  }
   setLang = (langKey) => {
-    this.setState({selectedLang: langKey});
     this.setState({showLangDropdown: false});
-    localStorage.setItem('langKey', langKey);
-    //location.reload();
     this.props.onClick(langKey);
   }
   render() {
@@ -34,7 +28,7 @@ class Header extends React.Component {
         </div>
         <div className="Header-Right">
           <span onClick={()=> {this.setState({showLangDropdown: !this.state.showLangDropdown})}}>
-            {langInfo[this.state.selectedLang]}
+            {langInfo[this.props.selectedLang]}
           </span>
           <div className={`dropdown-menu ${this.state.showLangDropdown ? 'Header-showLangDropdown' : ''}`}>
             {Object.keys(langInfo).map(langKey => (
@@ -50,9 +44,8 @@ class Header extends React.Component {
 }
 
 const langStateToProps = (state) => {  
-  console.log(state);
   return {
-    selectedLang: state.todos
+    selectedLang: state.langKey
   }
 }
 

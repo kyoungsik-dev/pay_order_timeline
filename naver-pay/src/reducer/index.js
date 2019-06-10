@@ -1,11 +1,16 @@
 import { setLanguage } from '../action/index';  
 
-const myApp = (state = [], action) => {  
+const initialState = {
+  langKey: 'ko'
+};
+
+const myApp = (state = initialState, action) => {  
+  console.log(state, action);
   switch (action.type) {
     case 'LANG_SET':
-      return [
-        ...state, setLanguage(action.lang_key)
-      ];
+      return {
+        ...state, langKey: action.langKey
+      };
     default:
       return state;
   }

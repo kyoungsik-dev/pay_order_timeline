@@ -4,9 +4,8 @@ import Root from './Root';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import myApp from './reducer/index';
+import myApp from './reducer';
 let store = createStore(myApp);
-
 ReactDom.render(
   <Provider store={store}>
     <Root />
